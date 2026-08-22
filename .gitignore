@@ -25,3 +25,6 @@ env/
 # Teacher-only material — NOT for students. Local-only, never committed.
 CLAUDE.md
 *.teacher.*
+
+# Week datasets live in the Hypha artifact ddls-course/2026-weekN, not in git.
+week-*/data/*.csv
