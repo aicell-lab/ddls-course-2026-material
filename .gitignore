@@ -12,3 +12,16 @@ env/
 
 # Data / large files (share via releases or external storage)
 *.zip
+
+# Secrets — NEVER commit. This repo is public.
+.env
+.env.local
+*.key
+
+# Agent workspace state
+.svamp/
+.codex/
+
+# Teacher-only material — NOT for students. Local-only, never committed.
+CLAUDE.md
+*.teacher.*
