@@ -3,7 +3,7 @@
 Download the dataset:
 
 ```bash
-python fetch_data.py
+python3 fetch_data.py
 ```
 
 You should end up with three files here:

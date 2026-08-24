@@ -9,10 +9,15 @@ on Wednesday afternoon.
 Then download the data and read the dictionary:
 
 ```bash
-cd week-1/data && python fetch_data.py
+cd /path/to/ddls-course-2026-material     # wherever you cloned it
+cd week-1/data && python3 fetch_data.py
 ```
 
 That pulls three CSVs (~8 MB) from the course data store. No key or login needed.
+
+> Every `cd` below is written **from the top of the repository**. If a command fails
+> with "No such file or directory", you are probably one folder down from where the
+> instructions assume. `cd "$(git rev-parse --show-toplevel)"` takes you back to the top.
 
 ## The dataset
 
@@ -42,7 +47,8 @@ character lives in `week-1/data-owner/AGENTS.md`, so you must start Codex **in t
 folder** — not in the repo root, and not in `week-1/`:
 
 ```bash
-cd week-1/data-owner     # <- this exact folder. It matters.
+cd "$(git rev-parse --show-toplevel)"    # back to the top of the repo
+cd week-1/data-owner                     # <- this exact folder. It matters.
 codex
 ```
 
@@ -52,8 +58,15 @@ scientist who tells you about their experiment. If you instead get a generic
 `cd` to `week-1/data-owner`, and start again.
 
 Say hello and start asking. Your first message is the beginning of the interview, so
-make it a good one. When you have what you need, ask them to summarise the brief in
-their own words and save it — you will need it in step 3.
+make it a good one.
+
+**Keep the transcript.** It is the input to everything you do next, and losing it means
+redoing the interview with a *different* collaborator. Codex stores each session under
+`~/.codex/sessions/`, but the simplest thing is to keep your own copy: paste each
+answer that matters into a `notes.md` in your own lab folder as you go.
+
+When you have what you need, ask them to summarise the brief in their own words, and
+paste that summary into `notes.md` too — you will need it in step 3.
 
 > **Write your own agent's `AGENTS.md` outside this repository** — e.g. `~/ddls/lab-1/`.
 > Codex merges every `AGENTS.md` it finds from the top of the repository down to the

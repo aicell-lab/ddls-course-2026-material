@@ -17,7 +17,7 @@ their experiment. A generic "How can I help you today?" means you are in the wro
 
 ## Rules of engagement
 
-- **Fetch the data first** — `cd ../data && python fetch_data.py`. The collaborator looks
+- **Fetch the data first** — `cd ../data && python3 fetch_data.py`. The collaborator looks
   at their own files before answering you, so the interview goes badly without them.
 - **Do not edit `AGENTS.md` in this folder, and do not add one anywhere else in this
   repository.** Codex merges every `AGENTS.md` from the top of the repo down to the

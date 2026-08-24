@@ -14,7 +14,53 @@ You never need a GPU of your own.
 > [WSL2](https://learn.microsoft.com/windows/wsl/install) (Ubuntu) and do everything inside
 > the WSL terminal. Everything below works unchanged there.
 
-Budget ~20 minutes. Do this **before** the first computer lab.
+Budget ~30 minutes. Do this **before** the first computer lab.
+
+---
+
+## Part 0 — The course repository and Python
+
+### 0.1 Get the course material
+
+```bash
+git clone https://github.com/aicell-lab/ddls-course-2026-material.git
+cd ddls-course-2026-material
+```
+
+Every path in these guides is written from this folder. `git pull` before each lab —
+we release material at the start of each module week.
+
+### 0.2 Python
+
+The labs are Python work. You need **3.10 or newer**:
+
+```bash
+python3 --version
+```
+
+No output? Install it — macOS: `brew install python`; Ubuntu/WSL:
+`sudo apt install python3 python3-pip python3-venv`.
+
+> **Use `python3`, not `python`.** On most Linux and WSL systems there is no `python`
+> command at all, and `python fetch_data.py` fails with `command not found`.
+
+### 0.3 A virtual environment and the packages
+
+```bash
+python3 -m venv ~/ddls-venv
+source ~/ddls-venv/bin/activate          # Windows/WSL: same command
+python3 -m pip install --upgrade pip
+python3 -m pip install pandas numpy scipy scikit-learn matplotlib seaborn jupyter
+```
+
+**You must re-run `source ~/ddls-venv/bin/activate` in every new terminal**, including
+at the start of each lab. If `import pandas` fails, that is almost always why.
+
+Check it:
+
+```bash
+python3 -c "import pandas, numpy, sklearn; print('PYTHON_OK', pandas.__version__)"
+```
 
 ---
 
@@ -104,6 +150,14 @@ codex exec "do X"          # one-shot, non-interactive — good for scripting
 ```
 
 Inside an interactive session, `/help` lists the slash commands, and `Ctrl-C` twice exits.
+
+> ⚠️ **`codex exec` keeps no memory between calls.** Each invocation is a brand-new
+> session that has never seen the previous one. That is fine for *"reformat this file"*,
+> and useless for a conversation — in the lab it means every call would give you a
+> **different collaborator with a different problem**, because the character is invented
+> fresh at the start of each session.
+>
+> **Run the interview in the interactive `codex` session**, not with `exec`.
 
 ### 1.7 How Codex reads your instructions
 
@@ -257,7 +311,7 @@ your own analyst.
 
 ```bash
 # ---- 0. Get the data first (the data owner expects it to be there) ----
-cd <course-repo>/week-N/data && python fetch_data.py
+cd <course-repo>/week-N/data && python3 fetch_data.py
 
 # ---- 1. Interview the data owner ----
 cd ../data-owner        # AGENTS.md here IS the collaborator
@@ -300,6 +354,9 @@ parts into your `AGENTS.md` is a legitimate (and encouraged) move.
 | Colab "session not found" | The backend reclaimed the VM. `colab sessions`, then `colab new` again. |
 | `Not inside a trusted directory` | Run `git init` in your lab folder, or pass `--skip-git-repo-check`. |
 | Colab CLI on Windows | Not supported — use WSL2. |
+| `python: command not found` | Use `python3`. Most Linux/WSL systems have no bare `python`. |
+| `ModuleNotFoundError: No module named 'pandas'` | Your venv isn't active. `source ~/ddls-venv/bin/activate`, then re-run. |
+| `codex exec` gives a different collaborator every time | Expected — `exec` has no memory. Run the interview in the interactive `codex` session. |
 | Everything hangs in `colab repl` / `colab console` | Those need a real terminal. Use `colab exec` instead. |
 
 Still stuck? Bring it to the start of the computer lab, or mail <ddls-course@scilifelab.se>.

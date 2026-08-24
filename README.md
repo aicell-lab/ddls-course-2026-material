@@ -10,6 +10,15 @@ This repository holds the hands-on material students need each week — computer
 lab briefs, agent prompts, datasets and helper code. The
 lectures, overview, and registration details live on the course website.
 
+## Get the material
+
+```bash
+git clone https://github.com/aicell-lab/ddls-course-2026-material.git
+cd ddls-course-2026-material
+```
+
+Run `git pull` before each lab — each week's material appears at the start of that week.
+
 ## Before the first lab — set up your tools
 
 The computer labs are run from your terminal with two CLIs: **Codex** (your AI agent) and the
