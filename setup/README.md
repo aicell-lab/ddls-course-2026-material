@@ -107,9 +107,15 @@ Inside an interactive session, `/help` lists the slash commands, and `Ctrl-C` tw
 
 ### 1.7 How Codex reads your instructions
 
-Codex picks up an **`AGENTS.md`** file from the directory you start it in (and from
-`~/.codex/AGENTS.md` globally). **This is where your system prompt goes.** When the lab asks
-you to "write the system prompt for your data-analyst agent", you are writing an `AGENTS.md`:
+**Codex is always started from a folder, and that folder decides who your agent is.**
+On startup it collects `AGENTS.md` files and merges them, in this order:
+
+1. `~/.codex/AGENTS.md` — global, applies to every session
+2. every `AGENTS.md` from the root of the git repository down to your current folder
+3. the `AGENTS.md` in the folder you started in
+
+**This is where your system prompt goes.** When the lab asks you to "write the system
+prompt for your data-analyst agent", you are writing an `AGENTS.md`:
 
 ```bash
 mkdir -p ~/ddls/lab-1 && cd ~/ddls/lab-1 && git init -q
@@ -119,6 +125,15 @@ codex                      # starts here, reads AGENTS.md, and follows it
 
 Run one directory per lab. What's in the folder *is* your agent's context — put the dataset,
 your interview notes, and `AGENTS.md` there.
+
+Two consequences of the merge rule, both of which bite in the lab:
+
+- **`cd` to the right folder before you start.** Starting Codex one level up gives you a
+  different agent — often a generic assistant with no character at all. If the reply to
+  your first message is not what you expected, check where you are with `pwd`.
+- **Keep your own `AGENTS.md` out of the course repository.** Anything you leave in there
+  gets merged into the agents we ship and quietly changes their behaviour. Your lab folder
+  (`~/ddls/lab-N/`) is a separate git repo of your own — that is deliberate.
 
 ---
 

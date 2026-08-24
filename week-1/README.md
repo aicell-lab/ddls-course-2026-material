@@ -35,21 +35,31 @@ instruments inside out, and they have a real decision they need to make. What th
 cannot do is state it as an analysis task. They have never written a line of code, and
 if you ask them a vague question you will get a vague answer.
 
-To start the interview, run Codex **from inside that folder** — that is how it picks up
-the collaborator's character:
+### Starting the interview
+
+Codex takes its instructions from the folder you start it in. The collaborator's
+character lives in `week-1/data-owner/AGENTS.md`, so you must start Codex **in that
+folder** — not in the repo root, and not in `week-1/`:
 
 ```bash
-cd week-1/data-owner
+cd week-1/data-owner     # <- this exact folder. It matters.
 codex
 ```
+
+**Check you got the right agent.** Your first message should be answered by a named
+scientist who tells you about their experiment. If you instead get a generic
+"How can I help you today?", you are in the wrong folder — quit with `Ctrl-C` twice,
+`cd` to `week-1/data-owner`, and start again.
 
 Say hello and start asking. Your first message is the beginning of the interview, so
 make it a good one. When you have what you need, ask them to summarise the brief in
 their own words and save it — you will need it in step 3.
 
-> Write your **own** agent's `AGENTS.md` in a **different folder** (e.g. `~/ddls/lab-1/`).
-> Codex reads `AGENTS.md` from wherever you start it, so if you write yours here you will
-> overwrite the collaborator and end up interviewing yourself. Leave `data-owner/` alone.
+> **Write your own agent's `AGENTS.md` outside this repository** — e.g. `~/ddls/lab-1/`.
+> Codex merges every `AGENTS.md` it finds from the top of the repository down to the
+> folder you started in. So a file you leave anywhere in the course repo gets mixed into
+> the collaborator's character and quietly breaks the interview. Keep your work in your
+> own folder and leave `data-owner/` untouched.
 
 So the lab is:
 
