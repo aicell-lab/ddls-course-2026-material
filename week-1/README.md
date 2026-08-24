@@ -9,8 +9,10 @@ on Wednesday afternoon.
 Then download the data and read the dictionary:
 
 ```bash
-cd data && python fetch_data.py
+cd week-1/data && python fetch_data.py
 ```
+
+That pulls three CSVs (~8 MB) from the course data store. No key or login needed.
 
 ## The dataset
 
@@ -33,14 +35,34 @@ instruments inside out, and they have a real decision they need to make. What th
 cannot do is state it as an analysis task. They have never written a line of code, and
 if you ask them a vague question you will get a vague answer.
 
+To start the interview, run Codex **from inside that folder** — that is how it picks up
+the collaborator's character:
+
+```bash
+cd week-1/data-owner
+codex
+```
+
+Say hello and start asking. Your first message is the beginning of the interview, so
+make it a good one. When you have what you need, ask them to summarise the brief in
+their own words and save it — you will need it in step 3.
+
+> Write your **own** agent's `AGENTS.md` in a **different folder** (e.g. `~/ddls/lab-1/`).
+> Codex reads `AGENTS.md` from wherever you start it, so if you write yours here you will
+> overwrite the collaborator and end up interviewing yourself. Leave `data-owner/` alone.
+
 So the lab is:
 
 1. **Interview the data owner.** Find out what they actually need, what they are going
    to do with the answer, and what constraints they are under. Push until you have
    something specific enough to be wrong.
 2. **Write the brief.** Summarise what you learned, in your own words.
-3. **Write the system prompt** for your own data-analyst agent, from that brief.
+3. **Write the system prompt** for your own data-analyst agent, from that brief — that
+   is an `AGENTS.md` in your own lab folder.
 4. **Run the analysis**, sending anything heavy to Google Colab.
+
+If you get stuck on the mechanics of any of this, [`../setup/README.md`](../setup/README.md)
+Part 3 has the full command sequence.
 
 Two things worth knowing before you start. The data owner **improvises a different
 problem every time**, so your question will not be the same as the group next to you —

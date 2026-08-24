@@ -230,22 +230,40 @@ colab log -s ddls -o lab1.ipynb     # also works with .md, .txt, .jsonl
 
 The workflow for a computer lab:
 
+**You will use two separate folders, and this matters.** Codex reads `AGENTS.md` from
+the directory you start it in, so the data owner's prompt and your analyst's prompt have
+to live apart — otherwise the second one overwrites the first and you end up interviewing
+your own analyst.
+
+| Folder | Holds | Whose `AGENTS.md` |
+|---|---|---|
+| `<course-repo>/week-N/data-owner/` | the collaborator | **ours** — do not edit it |
+| `~/ddls/lab-N/` (you create this) | your notes, your analysis | **yours** — you write it |
+
 ```bash
-mkdir -p ~/ddls/lab-1 && cd ~/ddls/lab-1 && git init -q
+# ---- 0. Get the data first (the data owner expects it to be there) ----
+cd <course-repo>/week-N/data && python fetch_data.py
 
-# 1. Interview the data owner (prompt supplied in week-N/agents/data-owner.md)
-codex -m gpt-5.6-luna
-#    → ask about the biology, the samples, what a good answer looks like.
-#    → save your notes as notes.md in this folder.
+# ---- 1. Interview the data owner ----
+cd ../data-owner        # AGENTS.md here IS the collaborator
+codex
+#    → ask about the biology, the samples, what decision they need to make,
+#      what happens to your answer, and what they have already tried.
+#    → when you are done, ask them to summarise the brief, and paste it into
+#      ~/ddls/lab-N/notes.md
 
-# 2. Write your analyst's system prompt
-$EDITOR AGENTS.md
+# ---- 2. Write your analyst's system prompt, in your OWN folder ----
+mkdir -p ~/ddls/lab-N && cd ~/ddls/lab-N && git init -q
+$EDITOR AGENTS.md       # role, the data, the goal from your brief, constraints
 
-# 3. Work with your analyst agent, GPU work deferred to Colab
-colab new -s lab1 --gpu T4
-codex                       # tell it: "run heavy code with `colab exec -s lab1 -f <file>`"
-colab stop -s lab1          # when you're done
+# ---- 3. Work with your analyst agent, GPU work deferred to Colab ----
+colab new -s labN --gpu T4
+codex                   # tell it: "run heavy code with `colab exec -s labN -f <file>`"
+colab stop -s labN      # when you're done
 ```
+
+The data stays in the course repo — point your analyst at it with an absolute path, or
+copy the CSVs into your lab folder.
 
 Tell your analyst agent, in `AGENTS.md`, that it has the Colab CLI available and how to use
 it. Running `colab skill` prints Google's own agent-facing cheat sheet — pasting the relevant
