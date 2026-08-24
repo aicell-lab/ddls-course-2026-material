@@ -6,26 +6,52 @@ Work through [`../setup/`](../setup/). You need the Codex CLI and the Google Col
 installed and working **before** the lab — we will not have time to debug installations
 on Wednesday afternoon.
 
+Then download the data and read the dictionary:
+
+```bash
+cd data && python fetch_data.py
+```
+
 ## The dataset
 
-The data for Wednesday's lab is already in [`data/`](data/). Feel free to open it and look
-around.
+An antifungal screening campaign: 24,000 compounds tested against *Candida auris*
+across 150 assay plates, plus a dose–response follow-up on 1,800 of them.
 
-It is deliberately undocumented. There is no data dictionary, the columns are not
-explained, and you are **not** expected to understand it yet. If it looks like a
-meaningless wall of numbers, that is the correct first impression — working out what it
-means is the lab.
+It is **fully documented**. [`data/DATA_DICTIONARY.md`](data/DATA_DICTIONARY.md)
+explains every column, its units, what is missing and why, and the problems the lab
+already knows about in their own run. Read it before Wednesday. There are no hidden
+columns and no tricks in the data itself.
 
 ## What happens in the lab
 
-You will be given a dataset by a collaborator and asked to answer a biological question
-with it. The catch is that the collaborator is a wet-lab scientist who cannot describe
-their problem in analytical terms, so you have to find out what they actually need by
-asking them. You will then instruct your own AI agent to do the analysis.
+Understanding the *data* is the easy part. The hard part is that **nobody has told you
+what question to answer.**
 
-The remaining material — including how to reach the collaborator — is released at the
-start of the module week.
+You will be introduced to the scientist who produced this dataset — played by an AI
+agent in [`data-owner/`](data-owner/). They know the biology, the samples and the
+instruments inside out, and they have a real decision they need to make. What they
+cannot do is state it as an analysis task. They have never written a line of code, and
+if you ask them a vague question you will get a vague answer.
+
+So the lab is:
+
+1. **Interview the data owner.** Find out what they actually need, what they are going
+   to do with the answer, and what constraints they are under. Push until you have
+   something specific enough to be wrong.
+2. **Write the brief.** Summarise what you learned, in your own words.
+3. **Write the system prompt** for your own data-analyst agent, from that brief.
+4. **Run the analysis**, sending anything heavy to Google Colab.
+
+Two things worth knowing before you start. The data owner **improvises a different
+problem every time**, so your question will not be the same as the group next to you —
+comparing prompts is useful, comparing answers is not. And they are holding something
+back about their situation that changes what a good answer looks like. You will only get
+it if you ask.
+
+Tuesday's lecture covers system prompts, context and working with agents. Wednesday is
+where you apply it.
 
 ## Friday
 
-You present the analysis you did on Wednesday. There is no paper to read.
+You present the analysis you did on Wednesday: what you were asked for, how you found
+out, what you did, and what you would tell the collaborator. There is no paper to read.

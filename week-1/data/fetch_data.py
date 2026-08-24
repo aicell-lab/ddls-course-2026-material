@@ -10,7 +10,7 @@ import pathlib
 import urllib.request
 
 BASE = "https://hypha.aicell.io/ddls-course/artifacts/2026-week1/files"
-FILES = ["screen_plates.csv", "compound_index.csv", "hits_confirmed.csv"]
+FILES = ["compounds.csv", "screen_wells.csv", "followup_assays.csv"]
 
 here = pathlib.Path(__file__).parent
 for name in FILES:
