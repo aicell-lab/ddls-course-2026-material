@@ -27,9 +27,10 @@ their experiment. A generic "How can I help you today?" means you are in the wro
 - **You may read `AGENTS.md`.** It will not tell you the answer, because there isn't one
   written down: the collaborator invents their situation at the start of each
   conversation. Reading it tells you what kind of thing to ask about, which is fair game.
-- They will not do the analysis for you, and they do not know any statistics. Asking them
-  which method to use is a wasted question.
-- Vague questions get vague answers. Specific questions get real ones.
+- They contribute biological and experimental judgement, but they will not perform the
+  computational analysis, write code, or choose statistical methods for you.
+- If you are unsure where to begin, say so. The collaborator will help refine the question
+  and offer useful directions. Specific questions still lead to more detailed answers.
 
 ## When you are done
 
